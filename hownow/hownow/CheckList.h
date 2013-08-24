@@ -10,6 +10,7 @@
 #import <Parse/PFObject+Subclass.h>
 
 #import "Item.h"
+#import "Rating.h"
 
 @interface CheckList : PFObject<PFSubclassing>
 
@@ -17,6 +18,8 @@
 
 @property (strong) NSString *name;
 @property (strong) PFUser *author;
+@property (assign) float rating;
+@property (readonly) Rating *myRating;
 @property (readonly) NSArray *items;
 
 @end

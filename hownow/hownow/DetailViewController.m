@@ -12,6 +12,7 @@
 #import "DetailViewController.h"
 
 #import "ItemTableViewCell.h"
+#import "RateItemCell.h"
 
 @interface DetailViewController ()
 
@@ -39,7 +40,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     
     _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionTouched:)];
-    _actionButton.enabled = NO;
     
     self.navigationItem.rightBarButtonItem = _actionButton;
     
@@ -93,7 +93,15 @@
         return;
     }
     
-    _actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"publish to HowNow", nil];
+    _actionSheet = [[UIActionSheet alloc] init];
+    _actionSheet.delegate = self;
+    
+    if (_list) {
+        [_actionSheet addButtonWithTitle:@"publish list to HowNow"];
+    }
+    
+    [_actionSheet addButtonWithTitle:@"cancel"];
+    _actionSheet.cancelButtonIndex = 1;
 
     [_actionSheet showFromBarButtonItem:_actionButton animated:YES];
 }
@@ -155,26 +163,41 @@
 #pragma mark UITableViewDataSource
 - (int)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return ![PFUser currentUser].isAnonymous;
 }
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[_list items] count] + (_list ? 1 : 0);
+    switch (section) {
+        case 0: return [[_list items] count] + (_list ? 1 : 0);
+        case 1: return 1;
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int row = [indexPath row];
-    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:row >= [_list.items count] ? @"AddItemCell" : @"ItemCell"];
-    
-    if (row < [_list.items count]) {
-        cell.item = [_list.items objectAtIndex:row];
+    switch (indexPath.section) {
+        case 0: {
+            int row = [indexPath row];
+            ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:row >= [_list.items count] ? @"AddItemCell" : @"ItemCell"];
+            
+            if (row < [_list.items count]) {
+                cell.item = [_list.items objectAtIndex:row];
+            }
+            
+            return cell;
+        }
+        case 1: {
+            return [tableView dequeueReusableCellWithIdentifier:@"RateItemCell"];
+        }
     }
     
-    return cell;
+    return nil;
 }
 
+bool publishAfterLogin = NO;
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -188,13 +211,15 @@
                 return;
             }
             
-            PFLogInViewController *livc = [[PFLogInViewController alloc] init];
-            livc.fields |= PFLogInFieldsFacebook;
-            livc.delegate = self;
-            
-            [self presentViewController:livc animated:YES completion:nil];
+            publishAfterLogin = YES;
         } break;
     }
+    
+    PFLogInViewController *livc = [[PFLogInViewController alloc] init];
+    livc.fields |= PFLogInFieldsFacebook;
+    livc.delegate = self;
+    
+    [self presentViewController:livc animated:YES completion:nil];
 }
 
 - (void)actionSheetCancel:(UIActionSheet *)actionSheet
@@ -222,7 +247,11 @@
         }
     }
 
-    [theApp publishList:_list];
+    if (publishAfterLogin) {
+        [theApp publishList:_list];
+    }
+    
+    publishAfterLogin = NO;
 }
 
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {

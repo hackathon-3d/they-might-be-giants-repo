@@ -239,18 +239,30 @@
                                                     <color key="textColor" red="7.621079918e-05" green="0.66294469869999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="DeadStars-sm.png" translatesAutoresizingMaskIntoConstraints="NO" id="gbu-Py-0Jz"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="LiveStars-sm.png" translatesAutoresizingMaskIntoConstraints="NO" id="lyB-DU-kh6">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" id="fCj-94-EKK"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ImQ-rs-6Y3" secondAttribute="trailing" constant="20" type="default" id="2Cc-Xo-EKX"/>
+                                            <constraint firstItem="lyB-DU-kh6" firstAttribute="leading" secondItem="ook-dO-zlc" secondAttribute="leading" constant="20" type="default" id="2yA-OX-eaB"/>
                                             <constraint firstItem="ImQ-rs-6Y3" firstAttribute="top" secondItem="QjI-Ie-nl5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="3vv-Yi-vMv"/>
                                             <constraint firstItem="QjI-Ie-nl5" firstAttribute="leading" secondItem="ook-dO-zlc" secondAttribute="leading" constant="20" type="default" id="4Nb-Qz-Wd0"/>
                                             <constraint firstAttribute="trailing" secondItem="QjI-Ie-nl5" secondAttribute="trailing" constant="20" type="default" id="5y1-6t-Bhc"/>
+                                            <constraint firstItem="gbu-Py-0Jz" firstAttribute="top" secondItem="lyB-DU-kh6" secondAttribute="top" type="default" id="7Jq-Yv-IH9"/>
+                                            <constraint firstItem="gbu-Py-0Jz" firstAttribute="leading" secondItem="ook-dO-zlc" secondAttribute="leading" constant="20" type="default" id="MpL-hJ-tq1"/>
+                                            <constraint firstItem="lyB-DU-kh6" firstAttribute="bottom" secondItem="ImQ-rs-6Y3" secondAttribute="bottom" type="default" id="ceu-EI-ky0"/>
                                             <constraint firstItem="QjI-Ie-nl5" firstAttribute="top" secondItem="ook-dO-zlc" secondAttribute="top" constant="7" id="xFR-rf-Hb7"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="authorLabel" destination="ImQ-rs-6Y3" id="ZjR-fz-41h"/>
+                                            <outlet property="deadStars" destination="gbu-Py-0Jz" id="idt-S2-a53"/>
+                                            <outlet property="liveStars" destination="lyB-DU-kh6" id="04Z-SP-Xnb"/>
                                             <outlet property="resultLabel" destination="QjI-Ie-nl5" id="viZ-ij-TES"/>
                                         </connections>
                                     </tableViewCell>
@@ -297,6 +309,8 @@
     </scenes>
     <resources>
         <image name="CheckSquare.png" width="53" height="53"/>
+        <image name="DeadStars-sm.png" width="95" height="18"/>
+        <image name="LiveStars-sm.png" width="95" height="18"/>
     </resources>
     <classes>
         <class className="AddChecklistViewController" superclassName="UIViewController">
@@ -332,6 +346,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ResultTableViewCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deadStars" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="liveStars" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="resultLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

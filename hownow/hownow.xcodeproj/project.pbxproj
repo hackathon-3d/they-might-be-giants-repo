@@ -16,6 +16,12 @@
 		770723E217C8B8F200820D2C /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723E017C8B8F200820D2C /* 86-camera@2x.png */; };
 		770723E817C8BF4400820D2C /* PFUser+HN.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723E717C8BF4400820D2C /* PFUser+HN.m */; };
 		7742F83117C8E3B900A40895 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7742F83017C8E3B900A40895 /* FacebookSDK.framework */; };
+		7742F83417C8ED6300A40895 /* LiveStars.png in Resources */ = {isa = PBXBuildFile; fileRef = 7742F83217C8ED6300A40895 /* LiveStars.png */; };
+		7742F83517C8ED6300A40895 /* DeadStars.png in Resources */ = {isa = PBXBuildFile; fileRef = 7742F83317C8ED6300A40895 /* DeadStars.png */; };
+		7742F83717C8F18700A40895 /* LiveStars-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 7742F83617C8F18700A40895 /* LiveStars-sm.png */; };
+		7742F83917C8F19000A40895 /* DeadStars-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 7742F83817C8F19000A40895 /* DeadStars-sm.png */; };
+		7742F83C17C8F95900A40895 /* RateItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742F83B17C8F95900A40895 /* RateItemCell.m */; };
+		7742F83F17C8FA9700A40895 /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742F83E17C8FA9700A40895 /* Rating.m */; };
 		77DC563C17C84428000BFFC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563B17C84428000BFFC7 /* UIKit.framework */; };
 		77DC563E17C84428000BFFC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563D17C84428000BFFC7 /* Foundation.framework */; };
 		77DC564017C84428000BFFC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563F17C84428000BFFC7 /* CoreGraphics.framework */; };
@@ -59,6 +65,14 @@
 		770723E617C8BF4400820D2C /* PFUser+HN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+HN.h"; sourceTree = "<group>"; };
 		770723E717C8BF4400820D2C /* PFUser+HN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+HN.m"; sourceTree = "<group>"; };
 		7742F83017C8E3B900A40895 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		7742F83217C8ED6300A40895 /* LiveStars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LiveStars.png; sourceTree = "<group>"; };
+		7742F83317C8ED6300A40895 /* DeadStars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeadStars.png; sourceTree = "<group>"; };
+		7742F83617C8F18700A40895 /* LiveStars-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LiveStars-sm.png"; sourceTree = "<group>"; };
+		7742F83817C8F19000A40895 /* DeadStars-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DeadStars-sm.png"; sourceTree = "<group>"; };
+		7742F83A17C8F95900A40895 /* RateItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateItemCell.h; sourceTree = "<group>"; };
+		7742F83B17C8F95900A40895 /* RateItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateItemCell.m; sourceTree = "<group>"; };
+		7742F83D17C8FA9700A40895 /* Rating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rating.h; sourceTree = "<group>"; };
+		7742F83E17C8FA9700A40895 /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rating.m; sourceTree = "<group>"; };
 		77DC563817C84428000BFFC7 /* hownow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hownow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DC563B17C84428000BFFC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		77DC563D17C84428000BFFC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -184,6 +198,8 @@
 				770723D317C87F4200820D2C /* LocalList.m */,
 				770723DC17C8973A00820D2C /* LocalListItem.h */,
 				770723DD17C8973B00820D2C /* LocalListItem.m */,
+				7742F83A17C8F95900A40895 /* RateItemCell.h */,
+				7742F83B17C8F95900A40895 /* RateItemCell.m */,
 			);
 			path = hownow;
 			sourceTree = "<group>";
@@ -191,6 +207,10 @@
 		77DC564217C84428000BFFC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7742F83817C8F19000A40895 /* DeadStars-sm.png */,
+				7742F83217C8ED6300A40895 /* LiveStars.png */,
+				7742F83617C8F18700A40895 /* LiveStars-sm.png */,
+				7742F83317C8ED6300A40895 /* DeadStars.png */,
 				770723DF17C8B8F200820D2C /* 86-camera.png */,
 				770723E017C8B8F200820D2C /* 86-camera@2x.png */,
 				770723D517C8953300820D2C /* CheckSquare.png */,
@@ -215,6 +235,8 @@
 				77DC568817C8785B000BFFC7 /* Item.m */,
 				770723E617C8BF4400820D2C /* PFUser+HN.h */,
 				770723E717C8BF4400820D2C /* PFUser+HN.m */,
+				7742F83D17C8FA9700A40895 /* Rating.h */,
+				7742F83E17C8FA9700A40895 /* Rating.m */,
 			);
 			name = parse.com;
 			sourceTree = "<group>";
@@ -280,6 +302,10 @@
 				770723D817C8953300820D2C /* CheckSquareCross.png in Resources */,
 				770723E117C8B8F200820D2C /* 86-camera.png in Resources */,
 				770723E217C8B8F200820D2C /* 86-camera@2x.png in Resources */,
+				7742F83417C8ED6300A40895 /* LiveStars.png in Resources */,
+				7742F83517C8ED6300A40895 /* DeadStars.png in Resources */,
+				7742F83717C8F18700A40895 /* LiveStars-sm.png in Resources */,
+				7742F83917C8F19000A40895 /* DeadStars-sm.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +328,8 @@
 				770723DB17C8969A00820D2C /* ItemTableViewCell.m in Sources */,
 				770723DE17C8973B00820D2C /* LocalListItem.m in Sources */,
 				770723E817C8BF4400820D2C /* PFUser+HN.m in Sources */,
+				7742F83C17C8F95900A40895 /* RateItemCell.m in Sources */,
+				7742F83F17C8FA9700A40895 /* Rating.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

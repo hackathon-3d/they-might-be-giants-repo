@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "CheckList.h"
+
 @interface LocalList : NSObject <NSCoding>
 
 @property (strong) NSString *name;
 @property (strong) NSString *checkListId;
 @property (readonly) NSMutableArray *items;
+@property (readonly) CheckList *publicList;
 
 @end

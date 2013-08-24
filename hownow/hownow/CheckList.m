@@ -10,7 +10,7 @@
 
 @implementation CheckList
 
-@dynamic name,author;
+@dynamic name,author, rating;
 @synthesize items=_items;
 
 + (NSString *)parseClassName
@@ -29,6 +29,15 @@
     }
     
     return _items;
+}
+
+- (Rating *)myRating
+{
+    PFQuery *q = [Rating query];
+    [q whereKey:@"checklist" equalTo:self];
+    [q whereKey:@"author" equalTo:[PFUser currentUser]];
+    
+    return (Rating *)[q getFirstObject];
 }
 
 

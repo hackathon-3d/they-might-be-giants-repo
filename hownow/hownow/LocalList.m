@@ -36,4 +36,11 @@
     
     return _items;
 }
+
+- (CheckList *)publicList
+{
+    PFQuery *q = [CheckList query];
+    
+    return (CheckList *)[q getObjectWithId:_checkListId];
+}
 @end

@@ -139,6 +139,42 @@
                                             <outlet property="itemText" destination="x7U-oS-jz8" id="0ZC-dv-w6N"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RateItemCell" rowHeight="80" id="5Kr-a6-fx7" customClass="RateItemCell">
+                                        <rect key="frame" x="0.0" y="182" width="703" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="703" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="DeadStars.png" translatesAutoresizingMaskIntoConstraints="NO" id="ehm-mF-vup"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="LiveStars.png" translatesAutoresizingMaskIntoConstraints="NO" id="McE-MD-pJm"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0d-2O-3mF">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="rate this list">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="ehm-mF-vup" firstAttribute="top" secondItem="5Kr-a6-fx7" secondAttribute="top" constant="20" type="default" id="4Ye-6v-ycQ"/>
+                                            <constraint firstItem="ehm-mF-vup" firstAttribute="leading" secondItem="5Kr-a6-fx7" secondAttribute="leading" constant="20" type="default" id="EhJ-vA-ihL"/>
+                                            <constraint firstItem="c0d-2O-3mF" firstAttribute="top" secondItem="5Kr-a6-fx7" secondAttribute="top" constant="18" id="Elf-it-qX8"/>
+                                            <constraint firstItem="c0d-2O-3mF" firstAttribute="leading" secondItem="5Kr-a6-fx7" secondAttribute="leading" constant="224" id="KiR-Op-v4o"/>
+                                            <constraint firstItem="ehm-mF-vup" firstAttribute="bottom" secondItem="McE-MD-pJm" secondAttribute="bottom" type="default" id="Vi4-7M-NWm"/>
+                                            <constraint firstItem="McE-MD-pJm" firstAttribute="leading" secondItem="5Kr-a6-fx7" secondAttribute="leading" constant="20" type="default" id="q5S-Hu-gJr"/>
+                                            <constraint firstItem="McE-MD-pJm" firstAttribute="top" secondItem="5Kr-a6-fx7" secondAttribute="top" constant="20" type="default" id="rOU-p3-1Oc"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="deadStars" destination="ehm-mF-vup" id="n6a-uh-QLx"/>
+                                            <outlet property="liveStars" destination="McE-MD-pJm" id="5Y0-m7-VEU"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="4" id="IWl-qb-zNM"/>
@@ -197,18 +233,30 @@
                                                     <color key="textColor" red="7.621079918e-05" green="0.66294469869999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="DeadStars-sm.png" translatesAutoresizingMaskIntoConstraints="NO" id="eQ6-V7-JdH"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="LiveStars-sm.png" translatesAutoresizingMaskIntoConstraints="NO" id="56D-ed-yZv">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" id="ild-Gc-ogf"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="mJj-MN-AqI" firstAttribute="top" secondItem="Dab-Tj-WLl" secondAttribute="top" constant="7" id="3ki-x8-hYl"/>
                                             <constraint firstItem="mJj-MN-AqI" firstAttribute="leading" secondItem="Dab-Tj-WLl" secondAttribute="leading" constant="20" type="default" id="D61-wr-stH"/>
+                                            <constraint firstItem="mJj-MN-AqI" firstAttribute="top" secondItem="Dab-Tj-WLl" secondAttribute="top" constant="7" id="Hru-C7-dRU"/>
                                             <constraint firstAttribute="trailing" secondItem="Dwb-AJ-w4j" secondAttribute="trailing" constant="20" type="default" id="Iqb-Yv-f4w"/>
+                                            <constraint firstItem="56D-ed-yZv" firstAttribute="top" secondItem="eQ6-V7-JdH" secondAttribute="top" type="default" id="J9j-y7-fch"/>
+                                            <constraint firstItem="56D-ed-yZv" firstAttribute="leading" secondItem="Dab-Tj-WLl" secondAttribute="leading" constant="20" type="default" id="MoY-nV-9uk"/>
                                             <constraint firstItem="Dwb-AJ-w4j" firstAttribute="top" secondItem="mJj-MN-AqI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QMS-YI-iOh"/>
+                                            <constraint firstItem="eQ6-V7-JdH" firstAttribute="leading" secondItem="Dab-Tj-WLl" secondAttribute="leading" constant="20" type="default" id="Rpc-Yf-YvQ"/>
+                                            <constraint firstItem="eQ6-V7-JdH" firstAttribute="bottom" secondItem="Dwb-AJ-w4j" secondAttribute="bottom" type="default" id="w8p-DO-DRV"/>
                                             <constraint firstAttribute="trailing" secondItem="mJj-MN-AqI" secondAttribute="trailing" constant="20" type="default" id="xZw-oM-iDD"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="authorLabel" destination="Dwb-AJ-w4j" id="gBT-Ru-zIt"/>
+                                            <outlet property="deadStars" destination="eQ6-V7-JdH" id="rXF-cl-7RW"/>
+                                            <outlet property="liveStars" destination="56D-ed-yZv" id="fa1-u4-Bu6"/>
                                             <outlet property="resultLabel" destination="mJj-MN-AqI" id="aiF-le-UYx"/>
                                         </connections>
                                     </tableViewCell>
@@ -249,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEn-sn-3Ua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1296" y="-892"/>
+            <point key="canvasLocation" x="1272" y="-636"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
@@ -327,7 +375,59 @@
     </scenes>
     <resources>
         <image name="CheckSquare.png" width="53" height="53"/>
+        <image name="DeadStars-sm.png" width="95" height="18"/>
+        <image name="DeadStars.png" width="190" height="35"/>
+        <image name="LiveStars-sm.png" width="95" height="18"/>
+        <image name="LiveStars.png" width="190" height="36"/>
     </resources>
+    <classes>
+        <class className="AddChecklistViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddChecklistViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="resultsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="searchBarView" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="DetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addItemTouched:"/>
+                <relationship kind="action" name="editTapDetected:"/>
+                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ItemTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemTableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="completeTouched:"/>
+                <relationship kind="outlet" name="itemButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="itemText" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="MasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RateItemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateItemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="deadStars" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="liveStars" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ResultTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResultTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deadStars" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="liveStars" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="resultLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

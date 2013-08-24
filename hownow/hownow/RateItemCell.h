@@ -1,5 +1,5 @@
 //
-//  ResultTableViewCell.h
+//  RateItemCell.h
 //  hownow
 //
 //  Created by Scott Means on 8/24/13.
@@ -7,15 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CheckList.h"
 
-@interface ResultTableViewCell : UITableViewCell
+@interface RateItemCell : UITableViewCell
 
-@property (strong) IBOutlet UILabel *resultLabel;
-@property (strong) IBOutlet UILabel *authorLabel;
 @property (strong) IBOutlet UIImageView *deadStars;
 @property (strong) IBOutlet UIImageView *liveStars;
-
-@property (strong) CheckList *checkList;
 
 @end
