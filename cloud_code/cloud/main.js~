@@ -16,13 +16,13 @@ Parse.Cloud.afterSave("Rating", function (request) {
       var avg = t/results.length;
 
       z = new Parse.Query("CheckList");
-      z.equalTo("objectId", checkId);
+      z.equalTo("id", checkId);
       z.find({
         success: function(result) {
         console.error(JSON.stringify(result));
-           result[0].set("rating", avg);
+           result.set("rating", avg);
 
-           result[0].save(null, {
+           result.save(null, {
                 success: function(result) {
                 console.error("saved!");
                 },
