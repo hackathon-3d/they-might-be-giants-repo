@@ -11,7 +11,7 @@
 #import "LocalList.h"
 #import "LocalListItem.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (readonly) NSString *docPath;
@@ -25,6 +25,7 @@
 - (void)loadLists;
 - (void)saveLists;
 - (void)checkFocusList;
+- (void)checkUserAuth;
 
 @end
 

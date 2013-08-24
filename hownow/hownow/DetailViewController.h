@@ -10,7 +10,7 @@
 
 #import "LocalList.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, PFLogInViewControllerDelegate>
 
 @property (strong, nonatomic) LocalList *list;
 @property (strong) IBOutlet UITableView *itemTable;

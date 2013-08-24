@@ -107,7 +107,6 @@
     return cl.objectId;
 }
 
-
 - (void)checkFocusList
 {
     if (!_focusList || ![_localLists containsObject:_focusList]) {
