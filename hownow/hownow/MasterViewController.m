@@ -7,15 +7,22 @@
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
+#import "AddChecklistViewController.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
 }
+
+@property (strong) UIButton *addButton;
+@property (strong) UIPopoverController *addPopover;
+
 @end
 
 @implementation MasterViewController
+
+@synthesize addButton=_addButton;
+@synthesize addPopover=_addPopover;
 
 - (void)awakeFromNib
 {
@@ -97,14 +104,27 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    b.frame = CGRectMake(0, 0, tableView.bounds.size.width, [self tableView:tableView heightForFooterInSection:section]);
+    _addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _addButton.frame = CGRectMake(0, 0, tableView.bounds.size.width, [self tableView:tableView heightForFooterInSection:section]);
     
-    [b setTitle:@"add" forState:UIControlStateNormal];
-
-    return b;
+    [_addButton setTitle:@"add" forState:UIControlStateNormal];
+    [_addButton addTarget:self action:@selector(addTouched:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return _addButton;
 }
 
+- (void)addTouched:(id)sender
+{
+    [self showAddView];
+}
+
+- (void)showAddView
+{
+    AddChecklistViewController *acvc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddChecklistVC"];
+    
+    _addPopover = [[UIPopoverController alloc] initWithContentViewController:acvc];
+    [_addPopover presentPopoverFromRect:_addButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath

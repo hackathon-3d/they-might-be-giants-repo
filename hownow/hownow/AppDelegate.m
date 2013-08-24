@@ -7,19 +7,37 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+
+#import "CheckList.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [CheckList registerSubclass];
+    [User registerSubclass];
+    [Item registerSubclass];
+    
+    [Parse setApplicationId:@"7wU05Rz9uuSArgLRB4wh5H90zLC4wbluAies1Zgv"
+                  clientKey:@"ugGxtXnOkBhuSfLVDWSTjuEH98jW2oVqM7fkoybb"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    [PFUser enableAutomaticUser];
+    [[PFUser currentUser] incrementKey:@"RunCount"];
+    [[PFUser currentUser] saveInBackground];
+    
     return YES;
 }
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
