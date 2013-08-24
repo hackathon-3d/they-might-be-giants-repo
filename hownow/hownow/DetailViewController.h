@@ -10,9 +10,13 @@
 
 #import "LocalList.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) LocalList *list;
+@property (strong) IBOutlet UITableView *itemTable;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+- (IBAction)addItemTouched:(id)sender;
+
 @end

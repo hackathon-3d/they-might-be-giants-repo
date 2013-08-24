@@ -13,7 +13,7 @@
 
 @implementation AppDelegate
 
-@synthesize localLists=_localLists;
+@synthesize localLists=_localLists, focusList=_focusList;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -73,6 +73,18 @@
    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 }
 
+- (LocalList *)focusList
+{
+    return _focusList;
+}
+
+- (void)setFocusList:(LocalList *)focusList
+{
+    _focusList = focusList;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:FOCUS_LIST_CHANGED object:_focusList];
+}
+
 - (NSArray *)localLists
 {
     if (!_localLists) {
@@ -91,6 +103,15 @@
     LocalList *ll = [[LocalList alloc] init];
     
     ll.name = name;
+    
+    if (checkList.items) {
+        for (Item *i in checkList.items) {
+            LocalListItem *lli = [LocalListItem new];
+            lli.label = i.label;
+            
+            [ll.items addObject:lli];
+        }
+    }
     
     [self.localLists addObject:ll];
     

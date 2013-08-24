@@ -15,7 +15,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:_name forKey:@"name"];
-    [aCoder encodeObject:_name forKey:@"checkListId"];
+    [aCoder encodeObject:_checkListId forKey:@"checkListId"];
     [aCoder encodeObject:_items forKey:@"items"];
 }
 
@@ -26,5 +26,14 @@
     _items = [aDecoder decodeObjectForKey:@"items"];
     
     return self;
+}
+
+- (NSMutableArray *)items
+{
+    if (!_items) {
+        _items = [NSMutableArray new];
+    }
+    
+    return _items;
 }
 @end

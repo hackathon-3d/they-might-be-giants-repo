@@ -10,6 +10,8 @@
 
 @implementation Item
 
+@dynamic label;
+
 + (NSString *)parseClassName
 {
     return @"Item";

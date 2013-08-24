@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		770723D417C87F4200820D2C /* LocalList.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723D317C87F4200820D2C /* LocalList.m */; };
+		770723D717C8953300820D2C /* CheckSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723D517C8953300820D2C /* CheckSquare.png */; };
+		770723D817C8953300820D2C /* CheckSquareCross.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723D617C8953300820D2C /* CheckSquareCross.png */; };
+		770723DB17C8969A00820D2C /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723DA17C8969A00820D2C /* ItemTableViewCell.m */; };
+		770723DE17C8973B00820D2C /* LocalListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723DD17C8973B00820D2C /* LocalListItem.m */; };
 		77DC563C17C84428000BFFC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563B17C84428000BFFC7 /* UIKit.framework */; };
 		77DC563E17C84428000BFFC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563D17C84428000BFFC7 /* Foundation.framework */; };
 		77DC564017C84428000BFFC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563F17C84428000BFFC7 /* CoreGraphics.framework */; };
@@ -41,6 +45,12 @@
 /* Begin PBXFileReference section */
 		770723D217C87F4200820D2C /* LocalList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalList.h; sourceTree = "<group>"; };
 		770723D317C87F4200820D2C /* LocalList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalList.m; sourceTree = "<group>"; };
+		770723D517C8953300820D2C /* CheckSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckSquare.png; sourceTree = "<group>"; };
+		770723D617C8953300820D2C /* CheckSquareCross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckSquareCross.png; sourceTree = "<group>"; };
+		770723D917C8969A00820D2C /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
+		770723DA17C8969A00820D2C /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
+		770723DC17C8973A00820D2C /* LocalListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalListItem.h; sourceTree = "<group>"; };
+		770723DD17C8973B00820D2C /* LocalListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalListItem.m; sourceTree = "<group>"; };
 		77DC563817C84428000BFFC7 /* hownow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hownow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DC563B17C84428000BFFC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		77DC563D17C84428000BFFC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,8 +170,12 @@
 				77DC566717C8579B000BFFC7 /* AddChecklistViewController.m */,
 				77DC568117C8681D000BFFC7 /* ResultTableViewCell.h */,
 				77DC568217C8681D000BFFC7 /* ResultTableViewCell.m */,
+				770723D917C8969A00820D2C /* ItemTableViewCell.h */,
+				770723DA17C8969A00820D2C /* ItemTableViewCell.m */,
 				770723D217C87F4200820D2C /* LocalList.h */,
 				770723D317C87F4200820D2C /* LocalList.m */,
+				770723DC17C8973A00820D2C /* LocalListItem.h */,
+				770723DD17C8973B00820D2C /* LocalListItem.m */,
 			);
 			path = hownow;
 			sourceTree = "<group>";
@@ -169,6 +183,8 @@
 		77DC564217C84428000BFFC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				770723D517C8953300820D2C /* CheckSquare.png */,
+				770723D617C8953300820D2C /* CheckSquareCross.png */,
 				77DC564317C84428000BFFC7 /* hownow-Info.plist */,
 				77DC564417C84428000BFFC7 /* InfoPlist.strings */,
 				77DC564717C84428000BFFC7 /* main.m */,
@@ -250,6 +266,8 @@
 				77DC565217C84428000BFFC7 /* Default-568h@2x.png in Resources */,
 				77DC565517C84428000BFFC7 /* MainStoryboard_iPhone.storyboard in Resources */,
 				77DC565817C84428000BFFC7 /* MainStoryboard_iPad.storyboard in Resources */,
+				770723D717C8953300820D2C /* CheckSquare.png in Resources */,
+				770723D817C8953300820D2C /* CheckSquareCross.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +288,8 @@
 				77DC568617C86A8A000BFFC7 /* User.m in Sources */,
 				77DC568917C8785B000BFFC7 /* Item.m in Sources */,
 				770723D417C87F4200820D2C /* LocalList.m in Sources */,
+				770723DB17C8969A00820D2C /* ItemTableViewCell.m in Sources */,
+				770723DE17C8973B00820D2C /* LocalListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

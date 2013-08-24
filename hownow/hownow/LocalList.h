@@ -12,6 +12,6 @@
 
 @property (strong) NSString *name;
 @property (strong) NSString *checkListId;
-@property (strong) NSMutableArray *items;
+@property (readonly) NSMutableArray *items;
 
 @end
