@@ -16,12 +16,14 @@
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property (strong) UIBarButtonItem *actionButton;
 @property (strong) UIActionSheet *actionSheet;
+@property (strong) UITapGestureRecognizer *tgr;
 
 @end
 
 @implementation DetailViewController
 
-@synthesize list=_list, actionButton=_actionButton, actionSheet=_actionSheet;
+@synthesize list=_list, actionButton=_actionButton, actionSheet=_actionSheet, itemTable=_itemTable,
+        tgr=_tgr;
 
 #pragma mark - Managing the detail item
 
@@ -30,6 +32,9 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(focusListChanged:) name:FOCUS_LIST_CHANGED object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     
     _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionTouched:)];
     _actionButton.enabled = NO;
@@ -37,6 +42,47 @@
     self.navigationItem.rightBarButtonItem = _actionButton;
     
     [theApp checkFocusList];
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    if (_masterPopoverController) {
+        return;
+    }
+    
+    NSDictionary* kbi = [notification userInfo];
+    NSValue* kbf = [kbi valueForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect rc = [kbf CGRectValue];
+    rc = [self.view convertRect:rc fromView:nil];
+    
+    _itemTable.contentInset = UIEdgeInsetsMake(0, 0, rc.size.height, 0);
+    
+    CGFloat dy = rc.origin.y - _itemTable.frame.origin.y;
+    CGRect rci = [_itemTable rectForRowAtIndexPath:[_itemTable indexPathForSelectedRow]];
+    rci = [self.view convertRect:rci fromView:_itemTable];
+    
+    if (rci.origin.y+rci.size.height > dy) {
+        [_itemTable scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    
+    _tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editTapDetected:)];
+    [self.view addGestureRecognizer:_tgr];
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification
+{
+    if (_masterPopoverController) {
+        return;
+    }
+    
+    _itemTable.contentInset = UIEdgeInsetsZero;
+    
+    [self.view removeGestureRecognizer:_tgr];
+}
+
+- (IBAction)editTapDetected:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 - (void)actionTouched:(UIView *)sender
@@ -134,7 +180,16 @@
     
     switch (buttonIndex) {
         case 0: {
-            [theApp publishList:_list];
+            if ([PFUser currentUser].isAuthenticated) {
+                [theApp publishList:_list];
+                
+                return;
+            }
+            
+            PFLogInViewController *livc = [PFLogInViewController new];
+            livc.delegate = self;
+            
+            [self presentViewController:livc animated:YES completion:nil];
         } break;
     }
 }
@@ -144,4 +199,18 @@
     _actionSheet = nil;
 }
 
+#pragma mark PFLoginViewControllerDelegate
+
+- (void)logInViewController:(PFLogInViewController *)controller
+               didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    [theApp publishList:_list];
+}
+
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    [theApp publishList:_list];
+}
 @end

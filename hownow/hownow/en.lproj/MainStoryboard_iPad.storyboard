@@ -328,44 +328,6 @@
     <resources>
         <image name="CheckSquare.png" width="53" height="53"/>
     </resources>
-    <classes>
-        <class className="AddChecklistViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddChecklistViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="resultsTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="searchBarView" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addItemTouched:"/>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ItemTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemTableViewCell.h"/>
-            <relationships>
-                <relationship kind="action" name="completeTouched:"/>
-                <relationship kind="outlet" name="itemButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="itemText" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ResultTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResultTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="resultLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
