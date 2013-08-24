@@ -12,6 +12,8 @@
 
 @implementation Rating
 
+@dynamic rating, author, checklist;
+
 + (NSString *)parseClassName
 {
     return @"Rating";

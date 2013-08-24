@@ -18,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [CheckList registerSubclass];
+    [Rating registerSubclass];
     [Item registerSubclass];
     
     [Parse setApplicationId:@"7wU05Rz9uuSArgLRB4wh5H90zLC4wbluAies1Zgv"
@@ -158,12 +159,16 @@
     
     ll.name = name;
     
-    if (checkList.items) {
-        for (Item *i in checkList.items) {
-            LocalListItem *lli = [LocalListItem new];
-            lli.label = i.label;
-            
-            [ll.items addObject:lli];
+    if (checkList) {
+        ll.checkListId = checkList.objectId;
+        
+        if (checkList.items) {
+            for (Item *i in checkList.items) {
+                LocalListItem *lli = [LocalListItem new];
+                lli.label = i.label;
+                
+                [ll.items addObject:lli];
+            }
         }
     }
     

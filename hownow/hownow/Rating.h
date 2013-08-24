@@ -8,10 +8,14 @@
 
 #import <Parse/Parse.h>
 
+@class CheckList;
+
 @interface Rating : PFObject <PFSubclassing>
 
 + (NSString *)parseClassName;
 
+@property (strong) PFUser *author;
+@property (strong) CheckList *checklist;
 @property (assign) float rating;
 
 @end

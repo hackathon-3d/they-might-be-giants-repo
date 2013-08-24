@@ -144,6 +144,25 @@
     [self.itemTable reloadData];
 }
 
+- (IBAction)rateListTouched:(UIView *)sender
+{
+    while (sender && ![sender isKindOfClass:[RateItemCell class]]) {
+        sender = sender.superview;
+    }
+    
+    assert(sender);
+    
+    RateItemCell *cell = (RateItemCell *)sender;
+    
+    Rating *r = [Rating object];
+    r.author = [PFUser currentUser];
+    r.rating = cell.liveStars.bounds.size.width/cell.deadStars.bounds.size.width;
+    r.checklist = _list.publicList;
+    [r save];
+    
+    [self.itemTable reloadData];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -163,7 +182,7 @@
 #pragma mark UITableViewDataSource
 - (int)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return ![PFUser currentUser].isAnonymous;
+    return _list ? (![PFUser currentUser].isAnonymous ? 2 : 1) : 0;
 }
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -190,7 +209,10 @@
             return cell;
         }
         case 1: {
-            return [tableView dequeueReusableCellWithIdentifier:@"RateItemCell"];
+            RateItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RateItemCell"];
+            cell.checkList = _list.publicList;
+            
+            return cell;
         }
     }
     

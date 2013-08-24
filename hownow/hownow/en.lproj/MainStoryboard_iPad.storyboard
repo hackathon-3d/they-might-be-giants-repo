@@ -146,7 +146,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="703" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="DeadStars.png" translatesAutoresizingMaskIntoConstraints="NO" id="ehm-mF-vup"/>
+                                                <imageView clipsSubviews="YES" contentMode="TopLeft" image="DeadStars.png" translatesAutoresizingMaskIntoConstraints="NO" id="ehm-mF-vup"/>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="LiveStars.png" translatesAutoresizingMaskIntoConstraints="NO" id="McE-MD-pJm"/>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0d-2O-3mF">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -157,6 +157,9 @@
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="rateListTouched:" destination="4" eventType="touchUpInside" id="wMF-bK-CzL"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -173,6 +176,7 @@
                                         <connections>
                                             <outlet property="deadStars" destination="ehm-mF-vup" id="n6a-uh-QLx"/>
                                             <outlet property="liveStars" destination="McE-MD-pJm" id="5Y0-m7-VEU"/>
+                                            <outlet property="rateButton" destination="c0d-2O-3mF" id="vz7-iq-xD8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -393,6 +397,7 @@
             <relationships>
                 <relationship kind="action" name="addItemTouched:"/>
                 <relationship kind="action" name="editTapDetected:"/>
+                <relationship kind="action" name="rateListTouched:" candidateClass="UIView"/>
                 <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemTable" candidateClass="UITableView"/>
             </relationships>
@@ -416,6 +421,7 @@
             <relationships>
                 <relationship kind="outlet" name="deadStars" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="liveStars" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rateButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="ResultTableViewCell" superclassName="UITableViewCell">
