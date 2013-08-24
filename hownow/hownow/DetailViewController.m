@@ -15,12 +15,13 @@
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property (strong) UIBarButtonItem *actionButton;
+@property (strong) UIActionSheet *actionSheet;
 
 @end
 
 @implementation DetailViewController
 
-@synthesize list=_list, actionButton=_actionButton;
+@synthesize list=_list, actionButton=_actionButton, actionSheet=_actionSheet;
 
 #pragma mark - Managing the detail item
 
@@ -34,11 +35,19 @@
     _actionButton.enabled = NO;
     
     self.navigationItem.rightBarButtonItem = _actionButton;
+    
+    [theApp checkFocusList];
 }
 
 - (void)actionTouched:(UIView *)sender
 {
+    if (_actionSheet) {
+        return;
+    }
     
+    _actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"publish to HowNow", nil];
+
+    [_actionSheet showFromBarButtonItem:_actionButton animated:YES];
 }
 
 - (void)focusListChanged:(NSNotification *)notification
@@ -48,7 +57,7 @@
     [self.masterPopoverController dismissPopoverAnimated:YES];
     
     [self.itemTable reloadData];
-    _actionButton.enabled = YES;
+    _actionButton.enabled = !!_list;
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,6 +125,23 @@
     }
     
     return cell;
+}
+
+#pragma mark UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    _actionSheet = nil;
+    
+    switch (buttonIndex) {
+        case 0: {
+            [theApp publishList:_list];
+        } break;
+    }
+}
+
+- (void)actionSheetCancel:(UIActionSheet *)actionSheet
+{
+    _actionSheet = nil;
 }
 
 @end

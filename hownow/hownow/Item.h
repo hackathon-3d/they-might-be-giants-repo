@@ -9,10 +9,14 @@
 #import <Parse/Parse.h>
 #import <Parse/PFObject+Subclass.h>
 
+@class CheckList;
+
 @interface Item : PFObject<PFSubclassing>
 
 + (NSString *)parseClassName;
 
 @property (strong) NSString *label;
+@property (strong) CheckList *checkList;
+@property (assign) int sequence;
 
 @end

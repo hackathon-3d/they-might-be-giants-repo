@@ -10,7 +10,7 @@
 
 @implementation Item
 
-@dynamic label;
+@dynamic label, checkList, sequence;
 
 + (NSString *)parseClassName
 {

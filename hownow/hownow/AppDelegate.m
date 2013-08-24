@@ -85,6 +85,38 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:FOCUS_LIST_CHANGED object:_focusList];
 }
 
+- (void)publishList:(LocalList *)list
+{
+    CheckList *cl = [CheckList object];
+    cl.name = list.name;
+    
+    NSError *err = nil;
+    
+    if ([cl save:&err]) {
+        for (int i = 0; i < list.items.count; i++) {
+            LocalListItem *lli = [list.items objectAtIndex:i];
+            Item *cli = [Item object];
+
+            cli.label = lli.label;
+            cli.sequence = i;
+            cli.checkList = cl;
+            [cli saveInBackground];
+        }
+    }
+}
+
+
+- (void)checkFocusList
+{
+    if (!_focusList || ![_localLists containsObject:_focusList]) {
+        if (_localLists.count) {
+            self.focusList = [_localLists objectAtIndex:0];
+        } else {
+            self.focusList = nil;
+        }
+    }
+}
+
 - (NSArray *)localLists
 {
     if (!_localLists) {

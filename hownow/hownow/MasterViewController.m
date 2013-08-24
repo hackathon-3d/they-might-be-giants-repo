@@ -83,6 +83,9 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [theApp.localLists removeObjectAtIndex:indexPath.row];
         [theApp saveLists];
+        
+        [theApp checkFocusList];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -127,17 +130,6 @@
         theApp.focusList = [theApp.localLists objectAtIndex:[indexPath row]];
     }
 }
-
-#ifdef DISABLE
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
-    }
-}
-#endif
 
 - (void)hideAddView
 {
