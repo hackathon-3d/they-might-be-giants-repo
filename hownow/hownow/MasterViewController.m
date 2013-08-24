@@ -101,12 +101,17 @@
 {
     AddChecklistViewController *acvc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddChecklistVC"];
     
-    _addPopover = [[UIPopoverController alloc] initWithContentViewController:acvc];
-    _addPopover.delegate = self;
-    
     acvc.master = self;
     
-    [_addPopover presentPopoverFromBarButtonItem:_addButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        _addPopover = [[UIPopoverController alloc] initWithContentViewController:acvc];
+        _addPopover.delegate = self;
+        
+        
+        [_addPopover presentPopoverFromBarButtonItem:_addButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    } else {
+        [self presentViewController:acvc animated:YES completion:nil];
+    }
 }
 /*
 // Override to support rearranging the table view.
@@ -126,14 +131,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        theApp.focusList = [theApp.localLists objectAtIndex:[indexPath row]];
-    }
+    theApp.focusList = [theApp.localLists objectAtIndex:[indexPath row]];
 }
 
 - (void)hideAddView
 {
-    [_addPopover dismissPopoverAnimated:YES];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [_addPopover dismissPopoverAnimated:YES];
+    } else {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
     [self.tableView reloadData];
 }
 

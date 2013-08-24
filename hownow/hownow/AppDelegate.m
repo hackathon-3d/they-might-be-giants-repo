@@ -85,7 +85,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:FOCUS_LIST_CHANGED object:_focusList];
 }
 
-- (void)publishList:(LocalList *)list
+- (NSString *)publishList:(LocalList *)list
 {
     CheckList *cl = [CheckList object];
     cl.name = list.name;
@@ -103,6 +103,8 @@
             [cli saveInBackground];
         }
     }
+    
+    return cl.objectId;
 }
 
 

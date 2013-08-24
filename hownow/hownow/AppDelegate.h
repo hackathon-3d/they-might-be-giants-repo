@@ -20,7 +20,7 @@
 
 - (LocalList *)createList:(NSString *)name withCheckList:(CheckList *)checkList;
 
-- (void)publishList:(LocalList *)list;
+- (NSString *)publishList:(LocalList *)list;
 
 - (void)loadLists;
 - (void)saveLists;

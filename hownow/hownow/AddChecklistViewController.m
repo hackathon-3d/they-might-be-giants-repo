@@ -43,6 +43,13 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [searchBarView becomeFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -127,6 +134,11 @@
     }
 }
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)queryResult:(NSArray *)results error:(NSError *)error
 {
     _results = results;
@@ -135,6 +147,7 @@
     
     _query = nil;
 }
+
 
 - (void)dealloc
 {
