@@ -18,7 +18,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [CheckList registerSubclass];
-    [User registerSubclass];
     [Item registerSubclass];
     
     [Parse setApplicationId:@"7wU05Rz9uuSArgLRB4wh5H90zLC4wbluAies1Zgv"
@@ -88,6 +87,7 @@
 - (NSString *)publishList:(LocalList *)list
 {
     CheckList *cl = [CheckList object];
+    cl.author = [PFUser currentUser];
     cl.name = list.name;
     
     NSError *err = nil;

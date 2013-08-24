@@ -7,6 +7,7 @@
 //
 
 #import "ResultTableViewCell.h"
+#import "PFUser+HN.h"
 
 @implementation ResultTableViewCell
 

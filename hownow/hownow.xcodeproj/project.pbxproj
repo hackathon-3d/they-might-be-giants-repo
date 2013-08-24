@@ -12,6 +12,9 @@
 		770723D817C8953300820D2C /* CheckSquareCross.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723D617C8953300820D2C /* CheckSquareCross.png */; };
 		770723DB17C8969A00820D2C /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723DA17C8969A00820D2C /* ItemTableViewCell.m */; };
 		770723DE17C8973B00820D2C /* LocalListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723DD17C8973B00820D2C /* LocalListItem.m */; };
+		770723E117C8B8F200820D2C /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723DF17C8B8F200820D2C /* 86-camera.png */; };
+		770723E217C8B8F200820D2C /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723E017C8B8F200820D2C /* 86-camera@2x.png */; };
+		770723E817C8BF4400820D2C /* PFUser+HN.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723E717C8BF4400820D2C /* PFUser+HN.m */; };
 		77DC563C17C84428000BFFC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563B17C84428000BFFC7 /* UIKit.framework */; };
 		77DC563E17C84428000BFFC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563D17C84428000BFFC7 /* Foundation.framework */; };
 		77DC564017C84428000BFFC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563F17C84428000BFFC7 /* CoreGraphics.framework */; };
@@ -38,7 +41,6 @@
 		77DC567C17C85C07000BFFC7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC567B17C85C07000BFFC7 /* SystemConfiguration.framework */; };
 		77DC568017C86200000BFFC7 /* CheckList.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DC567F17C86200000BFFC7 /* CheckList.m */; };
 		77DC568317C8681D000BFFC7 /* ResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DC568217C8681D000BFFC7 /* ResultTableViewCell.m */; };
-		77DC568617C86A8A000BFFC7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DC568517C86A8A000BFFC7 /* User.m */; };
 		77DC568917C8785B000BFFC7 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DC568817C8785B000BFFC7 /* Item.m */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,10 @@
 		770723DA17C8969A00820D2C /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		770723DC17C8973A00820D2C /* LocalListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalListItem.h; sourceTree = "<group>"; };
 		770723DD17C8973B00820D2C /* LocalListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalListItem.m; sourceTree = "<group>"; };
+		770723DF17C8B8F200820D2C /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
+		770723E017C8B8F200820D2C /* 86-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera@2x.png"; sourceTree = "<group>"; };
+		770723E617C8BF4400820D2C /* PFUser+HN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+HN.h"; sourceTree = "<group>"; };
+		770723E717C8BF4400820D2C /* PFUser+HN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+HN.m"; sourceTree = "<group>"; };
 		77DC563817C84428000BFFC7 /* hownow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hownow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DC563B17C84428000BFFC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		77DC563D17C84428000BFFC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,8 +92,6 @@
 		77DC567F17C86200000BFFC7 /* CheckList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckList.m; sourceTree = "<group>"; };
 		77DC568117C8681D000BFFC7 /* ResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTableViewCell.h; sourceTree = "<group>"; };
 		77DC568217C8681D000BFFC7 /* ResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultTableViewCell.m; sourceTree = "<group>"; };
-		77DC568417C86A8A000BFFC7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		77DC568517C86A8A000BFFC7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		77DC568717C8785B000BFFC7 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		77DC568817C8785B000BFFC7 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +187,8 @@
 		77DC564217C84428000BFFC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				770723DF17C8B8F200820D2C /* 86-camera.png */,
+				770723E017C8B8F200820D2C /* 86-camera@2x.png */,
 				770723D517C8953300820D2C /* CheckSquare.png */,
 				770723D617C8953300820D2C /* CheckSquareCross.png */,
 				77DC564317C84428000BFFC7 /* hownow-Info.plist */,
@@ -201,10 +207,10 @@
 			children = (
 				77DC567E17C86200000BFFC7 /* CheckList.h */,
 				77DC567F17C86200000BFFC7 /* CheckList.m */,
-				77DC568417C86A8A000BFFC7 /* User.h */,
-				77DC568517C86A8A000BFFC7 /* User.m */,
 				77DC568717C8785B000BFFC7 /* Item.h */,
 				77DC568817C8785B000BFFC7 /* Item.m */,
+				770723E617C8BF4400820D2C /* PFUser+HN.h */,
+				770723E717C8BF4400820D2C /* PFUser+HN.m */,
 			);
 			name = parse.com;
 			sourceTree = "<group>";
@@ -268,6 +274,8 @@
 				77DC565817C84428000BFFC7 /* MainStoryboard_iPad.storyboard in Resources */,
 				770723D717C8953300820D2C /* CheckSquare.png in Resources */,
 				770723D817C8953300820D2C /* CheckSquareCross.png in Resources */,
+				770723E117C8B8F200820D2C /* 86-camera.png in Resources */,
+				770723E217C8B8F200820D2C /* 86-camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,11 +293,11 @@
 				77DC566817C8579B000BFFC7 /* AddChecklistViewController.m in Sources */,
 				77DC568017C86200000BFFC7 /* CheckList.m in Sources */,
 				77DC568317C8681D000BFFC7 /* ResultTableViewCell.m in Sources */,
-				77DC568617C86A8A000BFFC7 /* User.m in Sources */,
 				77DC568917C8785B000BFFC7 /* Item.m in Sources */,
 				770723D417C87F4200820D2C /* LocalList.m in Sources */,
 				770723DB17C8969A00820D2C /* ItemTableViewCell.m in Sources */,
 				770723DE17C8973B00820D2C /* LocalListItem.m in Sources */,
+				770723E817C8BF4400820D2C /* PFUser+HN.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

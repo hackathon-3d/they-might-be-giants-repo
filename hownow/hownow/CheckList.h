@@ -9,7 +9,6 @@
 #import <Parse/Parse.h>
 #import <Parse/PFObject+Subclass.h>
 
-#import "User.h"
 #import "Item.h"
 
 @interface CheckList : PFObject<PFSubclassing>
@@ -17,7 +16,7 @@
 + (NSString *)parseClassName;
 
 @property (strong) NSString *name;
-@property (strong) User *author;
+@property (strong) PFUser *author;
 @property (readonly) NSArray *items;
 
 @end
