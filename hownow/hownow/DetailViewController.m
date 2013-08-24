@@ -36,50 +36,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(focusListChanged:) name:FOCUS_LIST_CHANGED object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-    
     _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionTouched:)];
     
     self.navigationItem.rightBarButtonItem = _actionButton;
     
     [theApp checkFocusList];
-}
-
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    if (_masterPopoverController) {
-        return;
-    }
-    
-    NSDictionary* kbi = [notification userInfo];
-    NSValue* kbf = [kbi valueForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect rc = [kbf CGRectValue];
-    rc = [self.view convertRect:rc fromView:nil];
-    
-    _itemTable.contentInset = UIEdgeInsetsMake(0, 0, rc.size.height, 0);
-    
-    CGFloat dy = rc.origin.y - _itemTable.frame.origin.y;
-    CGRect rci = [_itemTable rectForRowAtIndexPath:[_itemTable indexPathForSelectedRow]];
-    rci = [self.view convertRect:rci fromView:_itemTable];
-    
-    if (rci.origin.y+rci.size.height > dy) {
-        [_itemTable scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
-    
-    _tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editTapDetected:)];
-    [self.view addGestureRecognizer:_tgr];
-}
-
-- (void)keyboardDidHide:(NSNotification *)notification
-{
-    if (_masterPopoverController) {
-        return;
-    }
-    
-    _itemTable.contentInset = UIEdgeInsetsZero;
-    
-    [self.view removeGestureRecognizer:_tgr];
 }
 
 - (IBAction)editTapDetected:(id)sender
