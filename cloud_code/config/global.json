@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "HowNow": {
+            "applicationId": "7wU05Rz9uuSArgLRB4wh5H90zLC4wbluAies1Zgv", 
+            "masterKey": "RaNk7NGws6xX1qgso8esvse7NL5Oy8d3DaxRm4Fd"
+        }, 
+        "_default": {
+            "link": "HowNow"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.9"
+    }
+}
