@@ -17,11 +17,17 @@
 
 - (NSString *)friendlyName
 {
-    if (self.isAuthenticated) {
-        return [self.allKeys containsObject:@"friendlyName"] ? [self objectForKey:@"friendlyName"] : nil;
+    if (!self.isAnonymous) {
+        [self fetchIfNeeded];
+        
+        return [self.allKeys containsObject:@"friendlyName"] ? [self objectForKey:@"friendlyName"] : self.username;
     } else {
         return @"anonymous";
     }
 }
 
+- (bool)isAnonymous
+{
+    return [PFAnonymousUtils isLinkedWithUser:self];
+}
 @end

@@ -15,6 +15,7 @@
 		770723E117C8B8F200820D2C /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723DF17C8B8F200820D2C /* 86-camera.png */; };
 		770723E217C8B8F200820D2C /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770723E017C8B8F200820D2C /* 86-camera@2x.png */; };
 		770723E817C8BF4400820D2C /* PFUser+HN.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723E717C8BF4400820D2C /* PFUser+HN.m */; };
+		7742F83117C8E3B900A40895 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7742F83017C8E3B900A40895 /* FacebookSDK.framework */; };
 		77DC563C17C84428000BFFC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563B17C84428000BFFC7 /* UIKit.framework */; };
 		77DC563E17C84428000BFFC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563D17C84428000BFFC7 /* Foundation.framework */; };
 		77DC564017C84428000BFFC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563F17C84428000BFFC7 /* CoreGraphics.framework */; };
@@ -57,6 +58,7 @@
 		770723E017C8B8F200820D2C /* 86-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera@2x.png"; sourceTree = "<group>"; };
 		770723E617C8BF4400820D2C /* PFUser+HN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+HN.h"; sourceTree = "<group>"; };
 		770723E717C8BF4400820D2C /* PFUser+HN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+HN.m"; sourceTree = "<group>"; };
+		7742F83017C8E3B900A40895 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		77DC563817C84428000BFFC7 /* hownow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hownow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DC563B17C84428000BFFC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		77DC563D17C84428000BFFC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +116,7 @@
 				77DC563C17C84428000BFFC7 /* UIKit.framework in Frameworks */,
 				77DC563E17C84428000BFFC7 /* Foundation.framework in Frameworks */,
 				77DC566517C84A56000BFFC7 /* Parse.framework in Frameworks */,
+				7742F83117C8E3B900A40895 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +152,7 @@
 		77DC563A17C84428000BFFC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7742F83017C8E3B900A40895 /* FacebookSDK.framework */,
 				77DC566417C84A56000BFFC7 /* Parse.framework */,
 				77DC563B17C84428000BFFC7 /* UIKit.framework */,
 				77DC563D17C84428000BFFC7 /* Foundation.framework */,

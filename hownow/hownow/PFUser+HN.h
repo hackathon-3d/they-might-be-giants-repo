@@ -12,5 +12,6 @@
 @interface PFUser (HN)
 
 @property (strong) NSString *friendlyName;
+@property (readonly) bool isAnonymous;
 
 @end

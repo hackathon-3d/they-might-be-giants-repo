@@ -23,6 +23,7 @@
     [Parse setApplicationId:@"7wU05Rz9uuSArgLRB4wh5H90zLC4wbluAies1Zgv"
                   clientKey:@"ugGxtXnOkBhuSfLVDWSTjuEH98jW2oVqM7fkoybb"];
     
+    [PFFacebookUtils initializeFacebook];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // Override point for customization after application launch.
@@ -39,6 +40,10 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [PFFacebookUtils handleOpenURL:url];
+}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -86,9 +91,25 @@
 
 - (NSString *)publishList:(LocalList *)list
 {
-    CheckList *cl = [CheckList object];
-    cl.author = [PFUser currentUser];
-    cl.name = list.name;
+    PFQuery *q = [CheckList query];
+    [q whereKey:@"name" equalTo:list.name];
+    [q whereKey:@"author" equalTo:[PFUser currentUser]];
+    
+    CheckList *cl = (CheckList *)[q getFirstObject];
+    
+    if (!cl) {
+        cl = [CheckList object];
+        cl.author = [PFUser currentUser];
+        cl.name = list.name;
+    } else {
+        q = [Item query];
+        [q whereKey:@"checkList" equalTo:cl];
+        NSArray *il = [q findObjects];
+        
+        for (Item *oi in il) {
+            [oi delete];
+        }
+    }
     
     NSError *err = nil;
     

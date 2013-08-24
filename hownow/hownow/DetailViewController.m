@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Scott Means. All rights reserved.
 //
 
+#import "PFUser+HN.h"
+
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 
@@ -180,13 +182,14 @@
     
     switch (buttonIndex) {
         case 0: {
-            if ([PFUser currentUser].isAuthenticated) {
+            if (![PFUser currentUser].isAnonymous) {
                 [theApp publishList:_list];
                 
                 return;
             }
             
-            PFLogInViewController *livc = [PFLogInViewController new];
+            PFLogInViewController *livc = [[PFLogInViewController alloc] init];
+            livc.fields |= PFLogInFieldsFacebook;
             livc.delegate = self;
             
             [self presentViewController:livc animated:YES completion:nil];
@@ -204,6 +207,20 @@
 - (void)logInViewController:(PFLogInViewController *)controller
                didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        FBSession *session = [PFFacebookUtils session];
+        assert(session.isOpen);
+        if (session.isOpen) {
+            FBRequest *me = [FBRequest requestForMe];
+            [me startWithCompletionHandler: ^(FBRequestConnection *connection,
+                                              NSDictionary<FBGraphUser> *my,
+                                              NSError *error) {
+                [PFUser currentUser].friendlyName = my.name;
+                [[PFUser currentUser] save];
+            }];
+        }
+    }
 
     [theApp publishList:_list];
 }
