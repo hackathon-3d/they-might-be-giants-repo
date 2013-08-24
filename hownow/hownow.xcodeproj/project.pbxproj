@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770723D417C87F4200820D2C /* LocalList.m in Sources */ = {isa = PBXBuildFile; fileRef = 770723D317C87F4200820D2C /* LocalList.m */; };
 		77DC563C17C84428000BFFC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563B17C84428000BFFC7 /* UIKit.framework */; };
 		77DC563E17C84428000BFFC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563D17C84428000BFFC7 /* Foundation.framework */; };
 		77DC564017C84428000BFFC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC563F17C84428000BFFC7 /* CoreGraphics.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		770723D217C87F4200820D2C /* LocalList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalList.h; sourceTree = "<group>"; };
+		770723D317C87F4200820D2C /* LocalList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalList.m; sourceTree = "<group>"; };
 		77DC563817C84428000BFFC7 /* hownow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hownow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DC563B17C84428000BFFC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		77DC563D17C84428000BFFC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -157,6 +160,8 @@
 				77DC566717C8579B000BFFC7 /* AddChecklistViewController.m */,
 				77DC568117C8681D000BFFC7 /* ResultTableViewCell.h */,
 				77DC568217C8681D000BFFC7 /* ResultTableViewCell.m */,
+				770723D217C87F4200820D2C /* LocalList.h */,
+				770723D317C87F4200820D2C /* LocalList.m */,
 			);
 			path = hownow;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				77DC568317C8681D000BFFC7 /* ResultTableViewCell.m in Sources */,
 				77DC568617C86A8A000BFFC7 /* User.m in Sources */,
 				77DC568917C8785B000BFFC7 /* Item.m in Sources */,
+				770723D417C87F4200820D2C /* LocalList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +410,7 @@
 				77DC566317C84428000BFFC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

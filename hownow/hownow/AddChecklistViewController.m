@@ -8,9 +8,13 @@
 
 #import <Parse/Parse.h>
 
+#import "AppDelegate.h"
+
 #import "AddChecklistViewController.h"
 #import "CheckList.h"
 #import "ResultTableViewCell.h"
+
+#import "MasterViewController.h"
 
 @interface AddChecklistViewController ()
 
@@ -22,7 +26,7 @@
 
 @implementation AddChecklistViewController
 
-@synthesize query=_query, results=_results, addButton=_addButton;
+@synthesize query=_query, results=_results, addButton=_addButton, master;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,6 +85,8 @@
     
     [_addButton setTitle:@"create a new list" forState:UIControlStateNormal];
     [_addButton addTarget:self action:@selector(addTouched:) forControlEvents:UIControlEventTouchUpInside];
+
+    _addButton.enabled = [searchBarView.text length];
     
     return _addButton;    
 }
@@ -89,17 +95,23 @@
 {
     CheckList *cl = [_results objectAtIndex:[indexPath row]];
     
-    NSLog(@"items: %@", cl.items);
+    [theApp createList:cl.name withCheckList:cl];
+    
+    [self.master hideAddView];
 }
 
 - (void)addTouched:(id)sender
 {
+    [theApp createList:searchBarView.text withCheckList:nil];
     
+    [self.master hideAddView];
 }
 
 #pragma mark UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    _addButton.enabled = [searchBar.text length];
+    
     [_query cancel];
     
     NSString *ss = searchBar.text;

@@ -13,6 +13,8 @@
 
 @implementation AppDelegate
 
+@synthesize localLists=_localLists;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [CheckList registerSubclass];
@@ -64,6 +66,55 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (NSString *)docPath
+{
+   return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+}
+
+- (NSArray *)localLists
+{
+    if (!_localLists) {
+        [self loadLists];
+
+        if (!_localLists) {
+            _localLists = [NSMutableArray new];
+        }
+    }
+    
+    return _localLists;
+}
+
+- (LocalList *)createList:(NSString *)name withCheckList:(CheckList *)checkList
+{
+    LocalList *ll = [[LocalList alloc] init];
+    
+    ll.name = name;
+    
+    [self.localLists addObject:ll];
+    
+    [self saveLists];
+    
+    return ll;
+}
+
+- (void)saveLists
+{
+    NSMutableData *md = [NSMutableData new];
+    NSKeyedArchiver *ka = [[NSKeyedArchiver alloc] initForWritingWithMutableData:md];
+    [ka encodeObject:_localLists forKey:@"localLists"];
+    [ka finishEncoding];
+    [md writeToFile:[self.docPath stringByAppendingPathComponent:@"localLists"] atomically:YES];
+}
+
+- (void)loadLists
+{
+    NSData *d = [NSData dataWithContentsOfFile:[self.docPath stringByAppendingPathComponent:@"localLists"]];
+    if (d) {
+        NSKeyedUnarchiver *ku = [[NSKeyedUnarchiver alloc] initForReadingWithData:d];
+        _localLists = [ku decodeObjectForKey:@"localLists"];
+    }
 }
 
 @end

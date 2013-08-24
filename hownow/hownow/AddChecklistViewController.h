@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "MasterViewController.h"
+
 @interface AddChecklistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
     IBOutlet UITableView *resultsTable;
+    IBOutlet UISearchBar *searchBarView;
 }
+
+@property (strong) MasterViewController *master;
 
 @end

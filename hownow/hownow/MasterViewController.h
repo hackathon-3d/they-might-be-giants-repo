@@ -10,8 +10,10 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+
+- (void)hideAddView;
 
 @end

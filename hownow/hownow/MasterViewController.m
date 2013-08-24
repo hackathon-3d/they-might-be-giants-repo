@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Scott Means. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "AddChecklistViewController.h"
 
 @interface MasterViewController () {
-    NSMutableArray *_objects;
 }
 
-@property (strong) UIButton *addButton;
+@property (strong) UIBarButtonItem *addButton;
 @property (strong) UIPopoverController *addPopover;
 
 @end
@@ -39,8 +39,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    _addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTouched:)];
+    self.navigationItem.rightBarButtonItem = _addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
@@ -48,16 +48,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)insertNewObject:(id)sender
-{
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
@@ -69,15 +59,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [theApp.localLists count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    LocalList *ll = [theApp.localLists objectAtIndex:[indexPath row]];
+    cell.textLabel.text = ll.name;
+
     return cell;
 }
 
@@ -90,27 +81,12 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [theApp.localLists removeObjectAtIndex:indexPath.row];
+        [theApp saveLists];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 50.0;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    _addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _addButton.frame = CGRectMake(0, 0, tableView.bounds.size.width, [self tableView:tableView heightForFooterInSection:section]);
-    
-    [_addButton setTitle:@"add" forState:UIControlStateNormal];
-    [_addButton addTarget:self action:@selector(addTouched:) forControlEvents:UIControlEventTouchUpInside];
-    
-    return _addButton;
 }
 
 - (void)addTouched:(id)sender
@@ -123,7 +99,11 @@
     AddChecklistViewController *acvc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddChecklistVC"];
     
     _addPopover = [[UIPopoverController alloc] initWithContentViewController:acvc];
-    [_addPopover presentPopoverFromRect:_addButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    _addPopover.delegate = self;
+    
+    acvc.master = self;
+    
+    [_addPopover presentPopoverFromBarButtonItem:_addButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 /*
 // Override to support rearranging the table view.
@@ -141,6 +121,7 @@
 }
 */
 
+#ifdef DISABLE
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -157,5 +138,16 @@
         [[segue destinationViewController] setDetailItem:object];
     }
 }
+#endif
 
+- (void)hideAddView
+{
+    [_addPopover dismissPopoverAnimated:YES];
+    [self.tableView reloadData];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self.tableView reloadData];
+}
 @end
